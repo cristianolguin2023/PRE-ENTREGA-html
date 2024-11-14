@@ -1,0 +1,306 @@
+<html lang="es" data-lt-installed="true">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InnoTech</title>
+    <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="./css/normalize.css" />
+    <link rel="stylesheet" href="./css/estilos.css" />
+
+    <meta name="theme-color" content="#2091F9" />
+
+    <meta name="title" content="Desarrollos, Personalizaciones y Capacitaciones" />
+    <meta name="description" content="Porque pensamos en vos y en tus necesidades." />
+
+    <meta property="og:type" content="InnoTech" />
+    <meta property="og:url" content="https://innotech.com.ar" />
+    <meta property="og:title" content="Desarrollos, Personalizaciones y Capacitaciones" />
+    <meta property="og:description" content="Porque pensamos en vos y en tus necesidades." />
+    <meta property="og:image" content="./images/css.jpg" />
+
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://github.com/cristianolguin2023/PRE-ENTREGA/" />
+    <meta property="twitter:title" content="Desarrollos, Personalizaciones y Capacitaciones" />
+    <meta property="twitter:description" content="Porque pensamos en vos y en tus necesidades." />
+    <meta property="twitter:image" content="./images/css.jpg" />
+</head>
+
+<body>
+    <header class="header">
+        <nav class="nav container">
+            <div class="nav__logo">
+                <h2 class="nav__title">InnoTech</h2>
+            </div>
+
+            <ul class="nav__link nav__link--menu">
+                <li class="nav__items">
+                    <a href="index.html" class="nav__links">Inicio</a>
+                </li>
+                <li class="nav__items">
+                    <a href="nosotros.html" class="nav__links">Acerca de</a>
+                </li>
+                <li class="nav__items">
+                    <a href="contacto.html" class="nav__links">Contacto</a>
+                </li>
+                <li class="nav__items">
+                    <a href="blog.html" class="nav__links">Blog</a>
+                </li>
+
+                <img src="./images/close.svg" class="nav__close" />
+            </ul>
+
+            <div class="nav__menu">
+                <img src="./images/menu.svg" class="nav__img" />
+            </div>
+        </nav>
+
+        <section class="header__container container">
+            <h1 class="header__container">
+                Porque pensamos en vos y en tus necesidades.
+            </h1>
+            <p class="header__container">
+                Elejinos para darte soluciones inteligentes y personalizadas.
+            </p>
+            <a href="#" class="cta">Contactar ahora</a>
+        </section>
+    </header>
+    <main>
+        <section class="blog-coming-soon container">
+            <h2 class="subtitle">Blog Próximamente</h2>
+
+            <div class="blog-coming-soon__content">
+                <p class="blog-coming-soon__text">
+                    ¡Estamos preparando algo especial para ti! Nuestro blog estará lleno de contenido útil, consejos tecnológicos, y las últimas tendencias en innovación.
+                </p>
+
+                <div class="blog-coming-soon__countdown">
+                    <p class="countdown__message">Faltan:</p>
+                    <div class="countdown__timer">
+                        <div class="countdown__item">
+                            <span id="days">00</span>
+                            <p>Días</p>
+                        </div>
+                        <div class="countdown__item">
+                            <span id="hours">00</span>
+                            <p>Horas</p>
+                        </div>
+                        <div class="countdown__item">
+                            <span id="minutes">00</span>
+                            <p>Minutos</p>
+                        </div>
+                        <div class="countdown__item">
+                            <span id="seconds">00</span>
+                            <p>Segundos</p>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="blog-coming-soon__cta-text">
+                    Suscríbete para ser el primero en enterarte.
+                </p>
+                <a href="#" class="blog-coming-soon__cta-btn">Suscribirse</a>
+            </div>
+        </section>
+
+        <style>
+            .blog-coming-soon {
+                text-align: center;
+                padding: 50px 20px;
+                background-color: #f4f4f4;
+                border-radius: 8px;
+            }
+            
+            .blog-coming-soon__content {
+                max-width: 800px;
+                margin: 0 auto;
+            }
+            
+            .blog-coming-soon__text {
+                font-size: 1.2rem;
+                color: #555;
+                margin-bottom: 30px;
+                line-height: 1.6;
+            }
+            
+            .blog-coming-soon__countdown {
+                margin: 30px 0;
+                background-color: #e7f3ff;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+            
+            .countdown__message {
+                font-size: 1.2rem;
+                font-weight: bold;
+                color: #333;
+                margin-bottom: 10px;
+            }
+            
+            .countdown__timer {
+                display: flex;
+                justify-content: center;
+                gap: 15px;
+            }
+            
+            .countdown__item {
+                text-align: center;
+            }
+            
+            .countdown__item span {
+                font-size: 2rem;
+                color: #007bff;
+                font-weight: bold;
+            }
+            
+            .countdown__item p {
+                font-size: 1rem;
+                color: #555;
+            }
+            
+            .blog-coming-soon__cta-text {
+                font-size: 1.1rem;
+                margin: 20px 0;
+                color: #555;
+            }
+            
+            .blog-coming-soon__cta-btn {
+                display: inline-block;
+                padding: 10px 20px;
+                background-color: #007bff;
+                color: #fff;
+                text-decoration: none;
+                border-radius: 5px;
+                font-size: 1rem;
+                transition: background-color 0.3s ease;
+            }
+            
+            .blog-coming-soon__cta-btn:hover {
+                background-color: #0056b3;
+            }
+            /* Responsive design */
+            
+            @media (max-width: 768px) {
+                .countdown__timer {
+                    flex-wrap: wrap;
+                }
+                .countdown__item {
+                    flex: 1 1 40%;
+                    margin-bottom: 10px;
+                }
+            }
+        </style>
+        <section class="questions container">
+            <h2 class="subtitle">Preguntas frecuentes</h2>
+            <p class="questions__paragraph">
+                Nuestro objetivo es ayudarte a transformar tu negocio con la menor inversión posible. Por eso te damos todas las respuestas:
+            </p>
+
+            <section class="questions__container">
+                <article class="questions__padding">
+                    <div class="questions__answer">
+                        <h3 class="questions__title">
+                            ¿Como nos manejamos?
+                            <span class="questions__arrow">
+                  <img src="./images/arrow.svg" class="questions__img" />
+                </span>
+                        </h3>
+
+                        <p class="questions__show">
+                            La calidad de nuestro servicio se refleja en la profesionalidad de nuestro equipo altamente calificado.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="questions__padding">
+                    <div class="questions__answer">
+                        <h3 class="questions__title">
+                            ¿Atención inmediata?
+                            <span class="questions__arrow">
+                  <img src="./images/arrow.svg" class="questions__img" />
+                </span>
+                        </h3>
+
+                        <p class="questions__show">
+                            Tu tranquilidad es nuestra prioridad: contamos con atención telefónica, WhatsApp y email para cualquier consulta.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="questions__padding">
+                    <div class="questions__answer">
+                        <h3 class="questions__title">
+                            ¿La atención espersonalizada?
+                            <span class="questions__arrow">
+                  <img src="./images/arrow.svg" class="questions__img" />
+                </span>
+                        </h3>
+
+                        <p class="questions__show">
+                            Ofrecemos atención personalizada para entender y resolver tus necesidades específicas.
+                        </p>
+                    </div>
+                </article>
+            </section>
+
+            <section class="questions__offer">
+                <h2 class="subtitle">
+                    ¿Estas listo para compartir experiencias y crecer como negocio?
+                </h2>
+                <p class="questions__copy">
+                    Elige nuestra experiencia y compromiso, porque ofrecemos soluciones personalizadas respaldadas por un equipo altamente calificado, atención inmediata, garantizamos la seguridad y eficiencia en cada proyecto.
+                </p>
+                <a href="#" class="cta">Contactar ahora</a>
+            </section>
+        </section>
+    </main>
+    <footer class="footer">
+        <section class="footer__container container">
+            <nav class="nav nav--footer">
+                <h2 class="footer__title">
+                    Un equipo de trabajo dedicado y apasionado.
+                </h2>
+
+                <ul class="nav__link nav__link--footer">
+                    <li class="nav__items">
+                        <a href="#" class="nav__links">Inicio</a>
+                    </li>
+                    <li class="nav__items">
+                        <a href="#" class="nav__links">Acerca de</a>
+                    </li>
+                    <li class="nav__items">
+                        <a href="#" class="nav__links">Contacto</a>
+                    </li>
+                    <li class="nav__items">
+                        <a href="#" class="nav__links">Blog</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <form class="footer__form" action="https://formspree.io/f/mknkkrkj" method="POST">
+                <h2 class="footer__newsletter">Suscribete a la newsletter</h2>
+                <div class="footer__inputs">
+                    <input type="email" placeholder="Email:" class="footer__input" name="_replyto" />
+                    <input type="submit" value="Registrate" class="footer__submit" />
+                </div>
+            </form>
+        </section>
+
+        <section class="footer__copy container">
+            <div class="footer__social">
+                <a href="#" class="footer__icons"><img src="./images/facebook.svg" class="footer__img" /></a>
+                <a href="#" class="footer__icons"><img src="./images/twitter.svg" class="footer__img" /></a>
+                <a href="#" class="footer__icons"><img src="./images/youtube.svg" class="footer__img" /></a>
+            </div>
+
+            <h3 class="footer__copyright">Derechos reservados © InnoTech</h3>
+        </section>
+    </footer>
+    <script src="./js/slider.js"></script>
+    <script src="./js/questions.js"></script>
+    <script src="./js/menu.js"></script>
+</body>
+
+</html>
