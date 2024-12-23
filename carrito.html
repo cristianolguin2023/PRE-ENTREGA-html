@@ -284,8 +284,13 @@
                 document.getElementById('user-logged-out').classList.add('d-none');
                 document.getElementById('user-logged-in').classList.remove('d-none');
                 document.getElementById('username-display').textContent = username;
-                const loginModal = bootstrap.Modal.getInstance(document.getElementById('login-modal'));
-                loginModal.hide();
+                //const loginModal = bootstrap.Modal.getInstance(document.getElementById('login-modal'));
+                //loginModal.hide();
+
+                document.getElementById('login-modal').classList.remove('show');
+                document.getElementById('login-modal').classList.remove('d-block');
+                document.body.classList.remove('modal-open');
+                document.getElementById('cart-icon').click();
             };
 
             const handleUserLogout = () => {
