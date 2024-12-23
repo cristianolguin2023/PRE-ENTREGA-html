@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="es" data-lt-installed="true">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InnoTech</title>
+    <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="./css/normalize.css" />
+    <link rel="stylesheet" href="./css/estilos.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <meta name="theme-color" content="#2091F9" />
+
+    <meta name="title" content="Desarrollos, Personalizaciones y Capacitaciones" />
+    <meta name="description" content="Porque pensamos en vos y en tus necesidades." />
+
+    <meta property="og:type" content="InnoTech" />
+    <meta property="og:url" content="https://innotech.com.ar" />
+    <meta property="og:title" content="Desarrollos, Personalizaciones y Capacitaciones" />
+    <meta property="og:description" content="Porque pensamos en vos y en tus necesidades." />
+    <meta property="og:image" content="./images/css.jpg" />
+
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://github.com/cristianolguin2023/PRE-ENTREGA/" />
+    <meta property="twitter:title" content="Desarrollos, Personalizaciones y Capacitaciones" />
+    <meta property="twitter:description" content="Porque pensamos en vos y en tus necesidades." />
+    <meta property="twitter:image" content="./images/css.jpg" />
+
+    <style>
+        body {
+            font-family: "Roboto", sans-serif;
+        }
+        
+        .cart {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 300px;
+            height: 100%;
+            background: #f8f9fa;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+            transition: right 0.3s ease;
+            overflow-y: auto;
+            padding: 1rem;
+            z-index: 1050;
+        }
+        
+        .cart.active {
+            right: 0;
+        }
+        
+        @media (max-width: 576px) {
+            .card {
+                width: 100%;
+            }
+        }
+        
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .bg-primary {
+            background-color: #2091F9 !important;
+        }
+        
+        .btn-primary {
+            background-color: #2091F9;
+            border-color: #2091F9;
+        }
+        
+        .btn-primary:hover {
+            background-color: #1b7ad6;
+            border-color: #1b7ad6;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="nav container">
+            <div class="nav__logo">
+                <h2 class="nav__title">InnoTech</h2>
+            </div>
+
+            <ul class="nav__link nav__link--menu">
+                <li class="nav__items">
+                    <a href="index.html" class="nav__links">Inicio</a>
+                </li>
+                <li class="nav__items">
+                    <a href="nosotros.html" class="nav__links">Acerca de</a>
+                </li>
+                <li class="nav__items">
+                    <a href="contacto.html" class="nav__links">Contacto</a>
+                </li>
+                <li class="nav__items">
+                    <a href="blog.html" class="nav__links">Blog</a>
+                </li>
+                <li class="nav__items">
+                    <a href="#cart" id="cart-icon" class="nav__links">Carrito (<span id="cart-count">0</span>)</a>
+                </li>
+
+                <li class="nav__items" id="user-logged-out">
+                    <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#login-modal">Iniciar sesión</a>
+                </li>
+                <li class="nav__items d-none" id="user-logged-in">
+                    <span class="nav-link">Bienvenido, <span id="username-display"></span></span>
+                    <button class="btn btn-link nav-link" id="logout-button">Cerrar sesión</button>
+                </li>
+
+                <img src="./images/close.svg" class="nav__close" alt="close" />
+            </ul>
+
+            <div class="nav__menu">
+                <img src="./images/menu.svg" class="nav__img" alt="menu" />
+            </div>
+        </nav>
+
+        <section class="header__container container">
+            <h1 class="header__container">
+                Porque pensamos en vos y en tus necesidades.
+            </h1>
+            <p class="header__container">
+                Elejinos para darte soluciones inteligentes y personalizadas.
+            </p>
+            <a href="#" class="cta">Contactar ahora</a>
+        </section>
+    </header>
+
+
+
+    <main class="container my-5">
+        <section id="products" class="row g-4">
+            <!-- Los productos serán cargados dinámicamente -->
+        </section>
+
+        <section id="cart" class="cart">
+            <div class="d-flex justify-content-between align-items-center">
+                <h4>Tu Carrito</h4>
+                <button class="btn-close" id="close-cart"></button>
+            </div>
+            <div id="cart-items" class="mt-3"></div>
+            <div class="cart-controls mt-3">
+                <p class="fw-bold">Total: $<span id="cart-total">0.00</span></p>
+                <button class="btn btn-danger w-100 mb-2" id="clear-cart">Vaciar carrito</button>
+                <button class="btn btn-success w-100" id="checkout">Finalizar compra</button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Modal de Login -->
+    <div class="modal fade" id="login-modal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Iniciar sesión</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="login-form">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Nombre de usuario</label>
+                            <input type="text" class="form-control" id="username" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Iniciar sesión</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <section class="footer__container container">
+            <nav class="nav nav--footer">
+                <h2 class="footer__title">
+                    Un equipo de trabajo dedicado y apasionado.
+                </h2>
+
+                <ul class="nav__link nav__link--footer">
+                    <li class="nav__items">
+                        <a href="#" class="nav__links">Inicio</a>
+                    </li>
+                    <li class="nav__items">
+                        <a href="#" class="nav__links">Acerca de</a>
+                    </li>
+                    <li class="nav__items">
+                        <a href="#" class="nav__links">Contacto</a>
+                    </li>
+                    <li class="nav__items">
+                        <a href="#" class="nav__links">Blog</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <form class="footer__form" action="https://formspree.io/f/mknkkrkj" method="POST">
+                <h2 class="footer__newsletter">Suscribete a la newsletter</h2>
+                <div class="footer__inputs">
+                    <input type="email" placeholder="Email:" class="footer__input" name="_replyto" />
+                    <input type="submit" value="Registrate" class="footer__submit" />
+                </div>
+            </form>
+        </section>
+
+        <section class="footer__copy container">
+            <div class="footer__social">
+                <a href="#" class="footer__icons"><img src="./images/facebook.svg" class="footer__img" alt="facebook" /></a>
+                <a href="#" class="footer__icons"><img src="./images/twitter.svg" class="footer__img" alt="twitter" /></a>
+                <a href="#" class="footer__icons"><img src="./images/youtube.svg" class="footer__img" alt="youtube" /></a>
+            </div>
+
+            <h3 class="footer__copyright">Derechos reservados © InnoTech</h3>
+        </section>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const API_URL = 'https://api.escuelajs.co/api/v1/products';
+
+            const cart = {
+                items: JSON.parse(localStorage.getItem('cartItems')) || [],
+
+                addItem(product) {
+                    if (!isUserLoggedIn()) {
+                        alert('Debes iniciar sesión para agregar productos al carrito.');
+                        return;
+                    }
+                    const existingItem = this.items.find(item => item.id === product.id);
+                    if (existingItem) {
+                        if (existingItem.quantity < product.stock) {
+                            existingItem.quantity++;
+                        } else {
+                            alert('¡No hay suficiente stock!');
+                        }
+                    } else {
+                        this.items.push({...product,
+                            quantity: 1
+                        });
+                    }
+                    this.save();
+                },
+
+                removeItem(productId) {
+                    const existingItem = this.items.find(item => item.id === productId);
+                    if (existingItem) {
+                        if (existingItem.quantity > 1) {
+                            existingItem.quantity--;
+                        } else {
+                            this.items = this.items.filter(item => item.id !== productId);
+                        }
+                    }
+                    this.save();
+                },
+
+                clear() {
+                    this.items = [];
+                    this.save();
+                },
+
+                save() {
+                    localStorage.setItem('cartItems', JSON.stringify(this.items));
+                    renderCart();
+                },
+
+                getTotal() {
+                    return this.items.reduce((total, item) => total + item.price * item.quantity, 0);
+                }
+            };
+
+            const isUserLoggedIn = () => {
+                return localStorage.getItem('loggedInUser') !== null;
+            };
+
+            const handleUserLogin = (username) => {
+                localStorage.setItem('loggedInUser', username);
+                document.getElementById('user-logged-out').classList.add('d-none');
+                document.getElementById('user-logged-in').classList.remove('d-none');
+                document.getElementById('username-display').textContent = username;
+                const loginModal = bootstrap.Modal.getInstance(document.getElementById('login-modal'));
+                loginModal.hide();
+            };
+
+            const handleUserLogout = () => {
+                localStorage.removeItem('loggedInUser');
+                document.getElementById('user-logged-out').classList.remove('d-none');
+                document.getElementById('user-logged-in').classList.add('d-none');
+                cart.clear();
+            };
+
+            const renderProducts = async() => {
+                try {
+                    const response = await fetch(API_URL);
+                    const products = await response.json();
+
+                    const productsContainer = document.getElementById('products');
+                    productsContainer.innerHTML = '';
+
+                    products.slice(0, 12).forEach(product => {
+                        const productCard = document.createElement('div');
+                        productCard.classList.add('col-md-3', 'mb-4');
+                        productCard.innerHTML = `
+                            <div class="card h-100">
+                                <img src="${product.images[0]}" class="card-img-top" alt="${product.title}">
+                                <div class="card-body">
+                                    <h5 class="card-title">${product.title}</h5>
+                                    <p class="card-text">$${product.price}</p>
+                                    <button class="btn btn-primary w-100 add-to-cart" 
+                                            data-id="${product.id}" 
+                                            data-name="${product.title}" 
+                                            data-price="${product.price}"
+                                            data-stock="${product.stock || 10}">
+                                        Agregar al carrito
+                                    </button>
+                                </div>
+                            </div>
+                        `;
+                        productsContainer.appendChild(productCard);
+                    });
+
+                    // Agregar eventos a los botones
+                    document.querySelectorAll('.add-to-cart').forEach(button => {
+                        button.addEventListener('click', (e) => {
+                            const dataset = e.target.dataset;
+                            const product = {
+                                id: parseInt(dataset.id),
+                                name: dataset.name,
+                                price: parseFloat(dataset.price),
+                                stock: parseInt(dataset.stock)
+                            };
+                            cart.addItem(product);
+                        });
+                    });
+                } catch (error) {
+                    console.error('Error al cargar los productos:', error);
+                }
+            };
+
+            const renderCart = () => {
+                const cartItemsContainer = document.getElementById('cart-items');
+                const cartTotal = document.getElementById('cart-total');
+                const cartCount = document.getElementById('cart-count');
+
+                cartItemsContainer.innerHTML = '';
+
+                if (!isUserLoggedIn()) {
+                    cartTotal.textContent = '0.00';
+                    cartCount.textContent = '0';
+                    return;
+                }
+
+                cart.items.forEach(item => {
+                    const itemDiv = document.createElement('div');
+                    itemDiv.classList.add('mb-3', 'p-2', 'border', 'rounded');
+                    itemDiv.innerHTML = `
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="mb-0">${item.name}</h6>
+                                <small>$${item.price} x ${item.quantity}</small>
+                            </div>
+                            <button class="btn btn-sm btn-danger remove-item" data-id="${item.id}">
+                                Eliminar
+                            </button>
+                        </div>
+                    `;
+                    cartItemsContainer.appendChild(itemDiv);
+                });
+
+                cartTotal.textContent = cart.getTotal().toFixed(2);
+                cartCount.textContent = cart.items.reduce((count, item) => count + item.quantity, 0);
+            };
+
+            // Eventos del carrito
+            document.getElementById('cart-icon').addEventListener('click', () => {
+                document.querySelector('.cart').classList.toggle('active');
+            });
+
+            document.getElementById('close-cart').addEventListener('click', () => {
+                document.querySelector('.cart').classList.remove('active');
+            });
+
+            document.getElementById('cart-items').addEventListener('click', (e) => {
+                if (e.target.classList.contains('remove-item')) {
+                    const id = parseInt(e.target.dataset.id);
+                    cart.removeItem(id);
+                }
+            });
+
+            document.getElementById('clear-cart').addEventListener('click', () => {
+                cart.clear();
+            });
+
+            document.getElementById('checkout').addEventListener('click', () => {
+                if (cart.items.length === 0) {
+                    alert('El carrito está vacío.');
+                    return;
+                }
+                alert('¡Compra realizada con éxito!');
+                cart.clear();
+            });
+
+            // Eventos de login
+            document.getElementById('login-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const username = document.getElementById('username').value.trim();
+                const password = document.getElementById('password').value.trim();
+
+                if (username && password) {
+                    handleUserLogin(username);
+                } else {
+                    alert('Por favor, ingresa un usuario y contraseña válidos.');
+                }
+            });
+
+            document.getElementById('logout-button').addEventListener('click', handleUserLogout);
+
+            // Inicialización
+            renderProducts();
+            renderCart();
+
+            if (isUserLoggedIn()) {
+                const username = localStorage.getItem('loggedInUser');
+                handleUserLogin(username);
+            }
+        });
+    </script>
+</body>
+
+</html>
